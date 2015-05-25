@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Editar comentari</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body class="container">
+    <div class="jumbotron">
+                  <h1>Edita el comentari</h1>
+                  <form action="/comentaris/<%= post.id %>" method="POST">
+                    <input type="text" name="id" value=<%= post.id %>>
+                    <br>
+                    Titol:<br>
+                    <input type="text" name="title">
+                    <br>
+                    Contingut:<br>
+                    <input type="text" name="content">
+                    <br>
+                    <br>
+                    <input type="submit" value="Enviar post">
+                  </form>
+    </div>
+
+  </body>
+</html>

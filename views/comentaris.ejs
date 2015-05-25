@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Comentaris</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body class="container">
+    <div class="jumbotron">
+                  <ul>
+                      <% postsArray.forEach(function(post) { %>
+                          <li><a href="/comentaris/<%=post.id%>"><%= post.title %></a> - <%= post.description %></li>
+                      <% }); %>
+                  </ul>
+    </div>
+
+  </body>
+</html>
