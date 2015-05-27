@@ -7,8 +7,8 @@
   <body class="container">
     <div class="jumbotron">
                   <ul>
-                      <% postsArray.forEach(function(post) { %>
-                          <li><a href="/comentaris/<%=post.id%>"><%= post.title %></a> - <%= post.description %></li>
+                      <% comments.forEach(function(post) { %>
+                          <li><a href="/comentaris/<%=post.id%>"><%= post.alertId %></a> - <%= post.comment %></li>
                       <% }); %>
                   </ul>
     </div>

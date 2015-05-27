@@ -18,8 +18,8 @@ function logger(req,res,next){
 app.use(logger);
 
 var posts = [
-    {id:0, title:"Comentari 1", description: "aaaaaa"},
-    {id:1, title:"Comentari dos", description: "Aixo es la descripció del segon post d'aquest blog cutre"},
+    {id:0, alertId:"Comentari 1", comment: "aaaaaa"},
+    {id:1, alertId:"Comentari dos", comment: "Aixo es la descripció del segon post d'aquest blog cutre"},
 ];
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -46,21 +46,21 @@ app.get("/secret",requiresSession,function(req,res){
 });
 app.get("/logout",destroySession,function(req,res){
     res.end("T'has desloguejat");
-});
-*/
+});*/
+
 /////////////////////////////////
 ////POSTS ///////////////////////
 /////////////////////////////////
 app.get("/comentaris", function(req, res) {
-    res.render("comentaris",{postsArray:posts});
+    res.render("comentaris",{comments:posts});
 });
 
 app.get("/comentaris/new", function(req, res) {
     res.render("comentForm");
 });
 
-app.post("/comentari", function(req, res, next) {
-    posts[posts.length]={id:posts.length, title:req.body.title, description: req.body.content};
+app.post("/comentaris", function(req, res, next) {
+    posts[posts.length]={id:posts.length, alertId:req.body.alertId, comment: req.body.comment};
     next("/comentaris");
 });
 
@@ -82,7 +82,7 @@ app.get("/comentaris/:comentid", function(req, res) {
 });
 
 app.post("/comentaris/:comentid", function(req, res, next) {
-    posts[req.post.id]={id:req.post.id, title:req.body.title, description: req.body.content};
+    posts[req.post.id]={id:req.post.id, alertId:req.body.alertId, comment: req.body.comment};
     next("/comentaris");
 });
 
