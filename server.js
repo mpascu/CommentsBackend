@@ -4,6 +4,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var auth = require("./simpleAuth");
 var app = express();
+var cookieParser = require('cookie-parser');
 //app.use(createSession);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -15,11 +16,12 @@ function logger(req,res,next){
     );
     next();
 }
+app.use(cookieParser());
 app.use(logger);
 
 var posts = [
-    {id:0, alertId:"Comentari 1", comment: "aaaaaa"},
-    {id:1, alertId:"Comentari dos", comment: "Aixo es la descripció del segon post d'aquest blog cutre"},
+    {id:0, alertId:"16", comment: "aaaaaa"},
+    {id:1, alertId:"16", comment: "Aixo es la descripció del segon post d'aquest blog cutre"},
 ];
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -54,7 +56,9 @@ app.get("/logout",destroySession,function(req,res){
 app.get("/comentaris", function(req, res) {
     res.render("comentaris",{comments:posts});
 });
-
+app.get("/comentarisJSON", function(req, res) {
+    res.json(posts);
+});
 app.get("/comentaris/new", function(req, res) {
     res.render("comentForm");
 });
