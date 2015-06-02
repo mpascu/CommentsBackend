@@ -6,11 +6,13 @@
   </head>
   <body class="container">
     <div class="jumbotron">
+      <h2>Llista de comentaris</h2>
                   <ul>
                       <% comments.forEach(function(post) { %>
                           <li><a href="/comentaris/<%=post.id%>"><%= post.alertId %></a> - <%= post.comment %></li>
                       <% }); %>
                   </ul>
+                  <a href="new/">Crea un nou comentari</a>
     </div>
 
   </body>
